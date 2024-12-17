@@ -80,19 +80,6 @@ This project aims to develop a system for online inspection of packed cases to d
 - Advanced classification using deep learning architectures.
 - Expand to multi-class classification for different ripeness levels.
 
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes and push the branch:
-   ```bash
-   git push origin feature-name
-   ```
-4. Open a pull request.
 
 ## License
 
