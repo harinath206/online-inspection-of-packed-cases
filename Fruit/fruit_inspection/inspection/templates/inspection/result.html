@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspection Results</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+        }
+        .result {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            color: #444;
+        }
+        .feedback-form {
+            margin-top: 20px;
+        }
+        .feedback-form input[type="radio"] {
+            margin-right: 10px;
+        }
+        .feedback-form input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .feedback-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis Result</h1>
+        <div class="result">
+            <p><strong>Color Check: </strong>{{ result.color_check }}</p>
+            <p><strong>Ripeness Check: </strong>{{ result.ripeness_check }}</p>
+            <p><strong>Uniformity Check: </strong> {{ result.uniformity_check }}</p>
+            <p><strong>Color Status:</strong> {{ result.color_status }}</p>
+            <p><strong>Ripeness Status:</strong> {{ result.ripeness_status }}</p>
+            <p><strong>Overall Status:</strong> {{ result.overall_status }}</p>
+        </div>
+        <div class="feedback-form">
+            <form action="{% url 'submit_feedback' %}" method="post">
+                {% csrf_token %}
+                <p>Was this analysis helpful?</p>
+                <label><input type="radio" name="feedback" value="yes"> Yes</label>
+                <label><input type="radio" name="feedback" value="no"> No</label>
+                <input type="hidden" name="image_name" value="{{ result.image_name }}">
+                <input type="submit" value="Submit Feedback">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inspection Results</title>
+    <link rel="stylesheet" href="{% static 'inspection/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="result-box">
+            <h1>Analysis Results</h1>
+            <div class="result-container">
+                <h3>Color Check: <span>{{ result.color_check }}</span></h3>
+                <h3>Ripeness Check: <span>{{ result.ripeness_check }}</span></h3>
+                <h3>Uniformity Check: <span> {{ result.uniformity_check }}</span></h3>
+                <h3>Color Status: <span>{{ result.color_status }}</span></h3>
+                <h3>Ripeness Status: <span>{{ result.ripeness_status }}</span></h3>
+                <h3>Overall Status: <span>{{ result.overall_status }}</span></h3>
+            </div>
+
+            <!-- Feedback form -->
+            <div class="feedback-section">
+                <h2>Was this analysis helpful?</h2>
+                <form method="POST" action="{% url 'submit_feedback' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="image_name" value="{{ image_name }}">
+                    <label>
+                        <input type="radio" name="feedback" value="yes" required> Yes
+                    </label>
+                    <label>
+                        <input type="radio" name="feedback" value="no" required> No
+                    </label>
+                    <button type="submit" class="submit-feedback">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html> {% endcomment %}
