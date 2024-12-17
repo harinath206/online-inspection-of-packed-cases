@@ -33,7 +33,7 @@ This project aims to develop a system for online inspection of packed cases to d
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/online-inspection-packed-cases.git
+   git clone https://github.com/harinath206/online-inspection-packed-cases.git
    ```
 2. Navigate to the project directory:
    ```bash
